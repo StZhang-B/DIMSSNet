@@ -35,6 +35,83 @@ https://blog.csdn.net/weixin_43101257/article/details/124472866
         }
     ]
 }
+```
 
+这是c_cpp_properities.json文件
+```cpp
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "F:/opencv/build/include",
+                "F:/opencv/build/include/opencv2"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "G:/mingw64/bin/gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "windows-gcc-x64"
+        }
+    ],
+    "version": 4
+}
+```
+
+我按照这篇博客配置之后，出现了报错：
+```cpp
+opencv2/opencv.hpp: No such file or directory
 
 ## task.json的配置
+下面这篇博客的launch.json和c_cpp_properities.json也可以参考，他的task.json也可以参考，大致思路就是按他的配的，但版本，文件名有点区别
+https://blog.csdn.net/m0_37833142/article/details/105686820
+
+task.json文件的作用是通过args参数设置opencv库和opencv函数的路径
+这是我的task.json文件：
+```cpp
+{
+    "version": "2.0.0", 
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe 生成活动文件",
+            "command": "G:\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-I", "F:/opencv/build/include",
+                "-I", "F:/opencv/build/include/opencv",
+                "-L", "F:/opencv/build/x64/MinGW/lib",
+                "-lopencv_world455"   
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "调试器生成的任务。"
+        }
+    ],
+}
+```
+
+## 调用chusei 3d webcam进行双目图片的获取
+
+
+
+
+
+
