@@ -1,4 +1,4 @@
-# 这个博客主要记录一下在VSCode中配置opencv(c++)的过程
+![image](https://github.com/StZhang-B/Mmwave-Semantic-Segementation/assets/119722046/39bb35e6-4132-4341-9f9c-37883c75ae0b)# 这个博客主要记录一下在VSCode中配置opencv(c++)的过程
 主要是买入了一个便宜的双目摄像头，chusei 3d webcam (单条usb)，因为在windows10系统中只能使用c++，且配置过程比较艰辛，所以有了这篇博客记录一下。
 这篇博客做的事情其实就是把opencv的.py文件通过cmake编译为了.hpp和.cpp文件，然后在VSCode里设置路径让C++能够使用opencv，那么为什么不直接使用python呢？
 因为这个摄像头他不支持python...便宜的代价好吧。
@@ -67,10 +67,14 @@ https://blog.csdn.net/weixin_43101257/article/details/124472866
 我按照这篇博客配置之后，出现了报错：
 ```cpp
 opencv2/opencv.hpp: No such file or directory
+```
 
 ## task.json的配置
 下面这篇博客的launch.json和c_cpp_properities.json也可以参考，他的task.json也可以参考，大致思路就是按他的配的，但版本，文件名有点区别
+
+```cpp
 https://blog.csdn.net/m0_37833142/article/details/105686820
+```
 
 task.json文件的作用是通过args参数设置opencv库和opencv函数的路径
 这是我的task.json文件：
@@ -111,6 +115,9 @@ task.json文件的作用是通过args参数设置opencv库和opencv函数的路�
 
 ## 调用chusei 3d webcam进行双目图片的获取
 利用上位机CHUSEI 3D Webcam获取视频，然后将视频中的每一帧图像分割为左右两个图像，每50ms分割一次（与雷达的Tc保持一致）
+
+最后使用mask_rcnn的demo看一下效果：
+
 
 
 
